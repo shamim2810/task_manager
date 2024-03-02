@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager/presentation/screen/pin_verification_screen.dart';
-import 'package:task_manager/presentation/screen/sign_in_screen.dart';
+import 'package:task_manager/presentation/screen/auth/sign_in_screen.dart';
 import 'package:task_manager/presentation/widgets/background_widget.dart';
 
 class SetPasswordScreen extends StatefulWidget {
