@@ -35,14 +35,14 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
                       ),
                 ),
                 const SizedBox(height: 16,),
-                TextField(
+                TextFormField(
                   controller: _titleTEController,
                   decoration: const InputDecoration(
                     hintText: 'Title'
                   ),
                 ),
                 const SizedBox(height: 8,),
-                TextField(
+                TextFormField(
                   controller: _descriptionTEController,
                   maxLines: 6,
                   decoration: const InputDecoration(
