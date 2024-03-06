@@ -7,6 +7,9 @@ import 'package:task_manager/data/models/response_object.dart';
 class NetworkCaller {
   static Future<ResponseObject> getRequest(String url) async {
     try {
+      log(url);
+      // var body;
+      // log(body.toString());
       final Response response = await get(
         Uri.parse(url),
       );
@@ -17,7 +20,15 @@ class NetworkCaller {
         final decodedResponse = jsonDecode(response.body);
         return ResponseObject(
             isSuccess: true, statusCode: 200, responseBody: decodedResponse);
-      } else {
+      } else if(response.statusCode == 401){
+        return ResponseObject(
+            isSuccess: false,
+            statusCode: response.statusCode,
+            responseBody: '',
+          errorMessage: 'Email/password is incorrect. Try again',
+        );
+      }
+      else {
         return ResponseObject(
             isSuccess: false,
             statusCode: response.statusCode,

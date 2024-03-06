@@ -20,45 +20,47 @@ class _AddNewTaskScreenState extends State<AddNewTaskScreen> {
       body: BackgroundWidget(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 48,
-                ),
-                Text(
-                  'Add new Task',
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontSize: 24,
-                      ),
-                ),
-                const SizedBox(height: 16,),
-                TextFormField(
-                  controller: _titleTEController,
-                  decoration: const InputDecoration(
-                    hintText: 'Title'
+          child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 48,
                   ),
-                ),
-                const SizedBox(height: 8,),
-                TextFormField(
-                  controller: _descriptionTEController,
-                  maxLines: 6,
-                  decoration: const InputDecoration(
-                      hintText: 'Description'
+                  Text(
+                    'Add new Task',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontSize: 24,
+                        ),
                   ),
-                ),
-                const SizedBox(height: 16,),
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      onPressed: (){
-                        Navigator.pop(context);
-                      },
-                      child: const Icon(Icons.arrow_circle_right_outlined)),
-                ),
-              ],
+                  const SizedBox(height: 16,),
+                  TextFormField(
+                    controller: _titleTEController,
+                    decoration: const InputDecoration(
+                      hintText: 'Title'
+                    ),
+                  ),
+                  const SizedBox(height: 8,),
+                  TextFormField(
+                    controller: _descriptionTEController,
+                    maxLines: 6,
+                    decoration: const InputDecoration(
+                        hintText: 'Description'
+                    ),
+                  ),
+                  const SizedBox(height: 16,),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                        onPressed: (){
+                          Navigator.pop(context);
+                        },
+                        child: const Icon(Icons.arrow_circle_right_outlined)),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
