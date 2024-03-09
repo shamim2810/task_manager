@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/data/models/response_object.dart';
+import 'package:task_manager/data/models/user_data.dart';
 import 'package:task_manager/data/services/network_caller.dart';
 import 'package:task_manager/data/utility/urls.dart';
+import 'package:task_manager/presentation/controllers/auth_controller.dart';
 import 'package:task_manager/presentation/screen/auth/email_verification_screen.dart';
 import 'package:task_manager/presentation/screen/auth/sign_up_screen.dart';
 import 'package:task_manager/presentation/screen/main_bottom_nav_screen.dart';
@@ -161,12 +163,22 @@ class _SignInScreenState extends State<SignInScreen> {
       if (!mounted) {
         return;
       }
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const MainBottomNavScreen(),
-          ),
-          (route) => false);
+
+      LoginResponse loginResponse =
+          LoginResponse.fromJson(response.responseBody);
+      
+      await AuthController.saveUserData(loginResponse.userData!);
+      await AuthController.saveUserToken(loginResponse.token!);
+      /// Save the data to local cache
+
+      if(mounted) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const MainBottomNavScreen(),
+            ),
+                (route) => false);
+      }
     } else {
       if (mounted) {
         showSnackBarMessage(
