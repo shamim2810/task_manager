@@ -1,28 +1,16 @@
+import 'package:task_manager/data/models/user_data.dart';
 
-class UserData {
-  String? email;
-  String? firstName;
-  String? lastName;
-  String? mobile;
-  String? photo;
+class LoginResponse {
+  String? status;
+  String? token;
+  UserData? userData;
 
-  UserData({this.email, this.firstName, this.lastName, this.mobile, this.photo});
+  LoginResponse({this.status, this.token, this.userData});
 
-  UserData.fromJson(Map<String, dynamic> json) {
-    email = json['email'];
-    firstName = json['firstName'];
-    lastName = json['lastName'];
-    mobile = json['mobile'];
-    photo = json['photo'];
+  LoginResponse.fromJson(Map<String, dynamic> json) {
+    status = json['status'];
+    token = json['token'];
+    userData = json['data'] != null ? UserData.fromJson(json['data']) : null;
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['email'] = email;
-    data['firstName'] = firstName;
-    data['lastName'] = lastName;
-    data['mobile'] = mobile;
-    data['photo'] = photo;
-    return data;
-  }
 }

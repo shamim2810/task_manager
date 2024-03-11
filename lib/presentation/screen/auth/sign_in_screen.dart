@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/data/models/response_object.dart';
-import 'package:task_manager/data/models/user_data.dart';
+import 'package:task_manager/data/models/login_response.dart';
 import 'package:task_manager/data/services/network_caller.dart';
 import 'package:task_manager/data/utility/urls.dart';
 import 'package:task_manager/presentation/controllers/auth_controller.dart';
